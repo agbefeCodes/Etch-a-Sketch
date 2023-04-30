@@ -5,3 +5,7 @@
     /* background-color: blue; */
     /* color: rgb(0, 0, 0); */
 }
+
+.boxes{
+    border: 1px solid black;
+}

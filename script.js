@@ -8,13 +8,14 @@ const fillBoard = (size = 16) => {
   const area = size * size;
   for (let i = 0; i < area; i++) {
     const square = document.createElement('div');
-    square.setAttribute('style', 'border: 1px solid');
+    square.setAttribute('class', 'board_squares boxes');
     square.style.backgroundColor = `blue`;
     square.addEventListener(
       'mouseover',
       () => (square.style.backgroundColor = 'red')
     );
     board.insertAdjacentElement('beforeend', square);
+    console.log(square);
   }
 };
 
@@ -28,3 +29,8 @@ const changeValue = newSize => {
 };
 
 changeValue(range);
+
+document.getElementById('borders').addEventListener('click', () => {
+  const borders = document.querySelectorAll('.board_squares');
+  borders.forEach(div => div.classList.toggle('boxes'));
+});
