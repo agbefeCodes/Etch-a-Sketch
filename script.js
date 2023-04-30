@@ -1,3 +1,10 @@
+const randColours = () => {
+  const red = Math.floor(Math.random() * 256);
+  const green = Math.floor(Math.random() * 256);
+  const blue = Math.floor(Math.random() * 256);
+  return `background-color: rgb(${red},${green},${blue})`;
+};
+
 const fillBoard = (size = 16) => {
   const board = document.querySelector('.board');
   const removeDiv = board.querySelectorAll('div');
@@ -8,13 +15,13 @@ const fillBoard = (size = 16) => {
   const area = size * size;
   for (let i = 0; i < area; i++) {
     const square = document.createElement('div');
+
     square.setAttribute('class', 'board_squares boxes');
-    square.addEventListener(
-      'mouseover',
-      () => (square.style.backgroundColor = 'red')
+    square.addEventListener('mouseover', () =>
+      square.setAttribute('style', `${randColours()}`)
     );
     board.insertAdjacentElement('beforeend', square);
-    console.log(square);
+    // console.log(square);
   }
 };
 
