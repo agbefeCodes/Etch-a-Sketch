@@ -9,7 +9,6 @@ const fillBoard = (size = 16) => {
   for (let i = 0; i < area; i++) {
     const square = document.createElement('div');
     square.setAttribute('class', 'board_squares boxes');
-    square.style.backgroundColor = `blue`;
     square.addEventListener(
       'mouseover',
       () => (square.style.backgroundColor = 'red')
@@ -30,7 +29,13 @@ const changeValue = newSize => {
 
 changeValue(range);
 
-document.getElementById('borders').addEventListener('click', () => {
-  const borders = document.querySelectorAll('.board_squares');
-  borders.forEach(div => div.classList.toggle('boxes'));
-});
+const borderVisibility = e => {
+  document
+    .querySelectorAll('.board_squares')
+    .forEach(div => div.classList.toggle('boxes'));
+  e.target.textContent =
+    e.target.textContent === 'turn off' ? 'turn on' : 'turn off';
+};
+
+const borders = document.getElementById('borders');
+borders.addEventListener('click', borderVisibility);
